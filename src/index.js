@@ -2,25 +2,52 @@
  * @class ExampleComponent
  */
 
-import React, { Component } from 'react'
+import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 
-import styles from './styles.css'
+export default class TouchMouseHandler extends Component {
+    static propTypes = {
+        children: PropTypes.func.isRequired,
+        handleAction: PropTypes.func,
+    }
+    constructor(props) {
+        super(props);
+        this.state = {
+            isTouchStarted: false
+        };
+    }
+    onEvent = (e) => {
+        const {isTouchStarted} = this.state;
+        const {handleAction} = this.props;
+        let eventType = '';
 
-export default class ExampleComponent extends Component {
-  static propTypes = {
-    text: PropTypes.string
-  }
+        if (!isTouchStarted) {
+            if (e.type === 'touchstart') {
+                eventType = 'touch';
+                this.setState({
+                    isTouchStarted: true
+                });
+            } else if (e.type === 'mouseenter') {
+                eventType = 'mouse';
+            }
+        } else {
+            e.preventDefault();
+        }
+        if (e.type === 'touchend') {
+            this.setState({
+                isTouchStarted: false
+            });
+        }
+        handleAction(eventType);
+    }
+    render() {
+        const {children} = this.props;
 
-  render() {
-    const {
-      text
-    } = this.props
-
-    return (
-      <div className={styles.test}>
-        Example Component: {text}
-      </div>
-    )
-  }
+        return children({
+            onTouchStart: this.onEvent,
+			onTouchEnd: this.onEvent,
+			onMouseEnter: this.onEvent,
+			onClick: this.onEvent
+        });
+    }
 }
