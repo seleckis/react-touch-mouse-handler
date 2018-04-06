@@ -46,8 +46,7 @@ export default class TouchMouseHandler extends Component {
         return children({
             onTouchStart: this.onEvent,
 			onTouchEnd: this.onEvent,
-			onMouseEnter: this.onEvent,
-			onClick: this.onEvent
+			onMouseEnter: this.onEvent
         });
     }
 }
