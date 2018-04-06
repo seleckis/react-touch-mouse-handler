@@ -16,42 +16,44 @@ npm install --save react-touch-mouse-handler
 
 ## Usage
 
+To make everything working you need to:
+
+1. Create a method which receives event type argument (myAction in example).
+1. Wrap your component in a function inside `TouchMouseHandler` component. This child function accepts events argument which should be passed your component.
+1. Pass these events farther to the DOM element.
+1. Write different actions for different event types.
+
 ```jsx
 import React, { Component } from 'react'
 
 import TouchMouseHandler from 'react-touch-mouse-handler';
 
-export default class App extends Component {
-    handleAction = (eventType) => {
-		if (eventType === 'touch') {
-			// do something if it was touch event (tap)
-		}
-        if (eventType === 'mouse') {
-            // do something if it was mouse event (mouseenter)
-		}
-	}
-    render() {
-        return (
-            <TouchMouseHandler handleAction={this.handleAction}>
-                {(events) => (
-                    <Button events={events}>Click me</Button>
-                )}
-            </TouchMouseHandler>
-        );
+export default class MenuItem extends Component {
+  myAction = (eventType) => {
+    if (eventType === 'touch') {
+      // do something if it was touch event (tap)
     }
+    if (eventType === 'mouse') {
+      // do something if it was mouse event (mouseenter)
+    }
+  }
+  render() {
+    return (
+      <TouchMouseHandler handleAction={this.myAction}>
+        {(events) => (
+          <Button events={events}>Click me</Button>
+        )}
+      </TouchMouseHandler>
+    );
+  }
 }
 
-```
-
-`TouchMouseHandler` component passes events `onTouchStart`, `onTouchEnd` and `onMouseEnter` to child function. You need to pass them to the child component and then to the DOM element.
-
-```jsx
 const Button = ({events}) => (
-    <button {...events}>Click me</button>
+  <button {...events}>Click me</button>
 );
 ```
 
 
 ## License
 
-MIT © [seleckis](https://github.com/seleckis)
+MIT © [seleckis](blob/master/LICENSE)
