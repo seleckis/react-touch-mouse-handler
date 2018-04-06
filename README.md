@@ -28,7 +28,7 @@ import React, { Component } from 'react'
 
 import TouchMouseHandler from 'react-touch-mouse-handler';
 
-export default class MenuItem extends Component {
+export default class App extends Component {
   myAction = (eventType) => {
     if (eventType === 'touch') {
       // do something if it was touch event (tap)
@@ -52,6 +52,8 @@ const Button = ({events}) => (
   <button {...events}>Click me</button>
 );
 ```
+
+If you have ideas for improvements, please open an issue.
 
 
 ## License
