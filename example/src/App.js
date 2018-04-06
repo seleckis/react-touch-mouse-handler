@@ -1,13 +1,28 @@
-import React, { Component } from 'react'
+import React, {Component} from 'react';
 
-import ExampleComponent from 'react-touch-mouse-handler'
+import TouchMouseHandler from 'react-touch-mouse-handler'
+
+
+const Button = ({events}) => (
+    <button {...events}>Click me</button>
+);
 
 export default class App extends Component {
-  render () {
-    return (
-      <div>
-        <ExampleComponent text='Modern React component module' />
-      </div>
-    )
-  }
+    handleAction = (eventType) => {
+		if (eventType === 'touch') {
+			console.log('isTouch');
+		}
+        if (eventType === 'mouse') {
+            console.log('isMouse');
+		}
+	}
+    render() {
+        return (
+            <TouchMouseHandler handleAction={this.handleAction}>
+                {(events) => (
+                    <Button events={events}>Click me</Button>
+                )}
+            </TouchMouseHandler>
+        );
+    }
 }
