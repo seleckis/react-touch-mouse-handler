@@ -1,7 +1,7 @@
-import ExampleComponent from './'
+import TouchMouseHandler from './'
 
-describe('ExampleComponent', () => {
+describe('TouchMouseHandler', () => {
   it('is truthy', () => {
-    expect(ExampleComponent).toBeTruthy()
+    expect(TouchMouseHandler).toBeTruthy()
   })
 })
