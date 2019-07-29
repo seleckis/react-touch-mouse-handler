@@ -1,7 +1,7 @@
 {
   "name": "react-touch-mouse-handler-example",
   "homepage": "https://seleckis.github.io/react-touch-mouse-handler",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "private": true,
   "license": "MIT",
   "dependencies": {
