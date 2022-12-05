@@ -1,6 +1,6 @@
 {
   "name": "react-touch-mouse-handler",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Higher Order Components for touch and mouse events control.",
   "author": "seleckis",
   "license": "MIT",
